@@ -1,9 +1,25 @@
-import example.pepita
+import example.*
 
-describe "group of tests for pepita" {
-
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+describe "Tests" {
+  const harry = new Estudiante(casa=gryffindor, sangrePura=true, habilidad=9, salud=100, hechizos=#{hechizo1})
+  const ron = new Estudiante(casa=gryffindor, sangrePura=true, habilidad=15, salud= 120, hechizos=#{hechizo1})
+  const draco = new Estudiante(casa=slytherin, sangrePura=true, habilidad=20, salud=70, hechizos=#{hechizo1})
+  const hermione = new Estudiante(casa=gryffindor, sangrePura=false, habilidad=0, salud=140, hechizos=#{hechizo1})
+  const hechizo1 = new HechizoComun(nivDificultad=2, dolorUnico = 6)
+  const hechizo2 = new HechizoImperdonable(nivDificultad = 7, dolorUnico = 14)
+  test "harry si sabe un carajo" {
+    assert.that(harry.puedeUsar(hechizo1))
   }
 
+  test "ron hace algo" {
+    assert.that(ron.puedeUsar(hechizo1))
+  }
+
+  test "draco" {
+    assert.that(draco.puedeUsar(hechizo1))
+  }
+
+  test "hermione es una inutil" {
+    assert.notThat(hermione.puedeUsar(hechizo1))
+  }
 }
